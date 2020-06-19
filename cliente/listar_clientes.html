@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block cuerpo %}
+	<h3 align="center
+	">Listado de Clientes</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Nombre Completo</th>
+				<th>Fecha de Nacimiento</th>
+				<th></th>
+			</tr>
+
+		</thead>
+		<tbody>
+			{% for cliente in clientes %}
+				<tr>
+					<td> {{ forloop.counter }} </td>
+					<td> {{ cliente.nombre_completo }} </td>
+					<td> {{ cliente.fecha_nacimiento| date:'l d F Y'}} </td>
+					<td>
+						<button class="2979ff blue accent-3">
+						<i class="large material-icons">
+						 info_outline</i></button>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

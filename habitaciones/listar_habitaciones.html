@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block cuerpo %}
+	<h3 align="center" color="ef6c00 orange darken-3">Listado de Habitaciones</h3>
+	{% if habitaciones %}
+	<table>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Descripcion</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+				{% for habitacion in habitaciones %}
+					<tr>
+						<td> {{ forloop.counter }} </td>
+						<td> {{ habitacion.descripcion }} </td>
+						<td>
+							<button class="2979ff blue accent-3">
+							<i class="large material-icons">
+							 info_outline</i></button>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>
+			<strong>
+				no existen habitaciones en la base de datos.
+			</strong>
+		</p>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block cuerpo %}
+	<h3 align="center">Encabezado de Factura</h3>
+	{% if encabezado_factura %}
+	<table>
+		<thead>
+			<tr>
+				<th>factura</th>
+				<th>Cliente</th>
+				<th>fecha_proceso</th>
+				<th></th>
+			 </tr>
+			</thead>
+			<tbody>
+				{% for encabezado in encabezado_factura %}
+					<tr>
+						<td> {{ forloop.counter }} </td>
+						<td> {{ encabezado.cliente }}</td>
+						<td> {{ encabezado.fecha_proceso| date:'l d F Y' }}</td>
+						<td>
+							<a href="{% url 'tienda:ver_factura' encabezado.factura %}">
+							<button class="2979ff blue accent-3">
+							<i class="large material-icons">
+							 info_outline</i></button>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>
+			<strong>
+				no existen facturas en la base de datos.
+			</strong>
+		</p>
+	{% endif %}
+{% endblock %}

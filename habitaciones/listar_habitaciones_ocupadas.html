@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block cuerpo %}
+	<h3 align="center">Listado de Habitaciones</h3>
+	{% if habitaciones_ocupadas %}
+	<table>
+		<thead>
+			<tr>
+				<th>Numero de Habitacion</th>
+				<th>Descripcion</th>
+				<th>Fecha de Registro</th>
+				<th>Dias Ocupadaos</th>
+				<th></th>
+			 </tr>
+			</thead>
+			<tbody>
+				{% for habitacion in habitaciones_ocupadas %}
+					<tr>
+						<td> {{ forloop.counter }} </td>
+						<td> {{ habitacion.habitacion }}</td>
+						<td> {{ habitacion.fecha_registro| date:'l d F Y' }}</td>
+						<td> {{ habitacion.dia_ocupados }}</td>
+						<td>
+							<button class="2979ff blue accent-3">
+							<i class="large material-icons">
+							 info_outline</i></button>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>
+			<strong>
+				no existen habitaciones en la base de datos.
+			</strong>
+		</p>
+	{% endif %}
+{% endblock %}
